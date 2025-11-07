@@ -1,0 +1,11 @@
+# Basic Navidrome Configuration
+MusicFolder = "/app/data/music"
+DataFolder  = "/app/data"
+Address     = "0.0.0.0"
+Port        = 4533
+LogLevel    = "info"
+EnableSharing = true
+
+# Admin credentials (you can change these)
+AdminUser  = "balu"
+AdminPassword = "1234@balu"

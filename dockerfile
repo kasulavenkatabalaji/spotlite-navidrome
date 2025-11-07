@@ -1,14 +1,13 @@
-# Use the official Navidrome Docker image
+# Use official Navidrome image
 FROM deluan/navidrome:latest
 
-# Expose the default Navidrome port
+# Copy your config file into the container
+COPY navidrome.toml /app/navidrome.toml
+
+# Copy your music if you want to bundle it (optional)
+# COPY data/music /app/data/music
+
 EXPOSE 4533
 
-# Set up environment variables for data and music folders
-ENV ND_DATAFOLDER=/data
-ENV ND_MUSICFOLDER=/music
-ENV ND_LOGLEVEL=info
-
-# Run Navidrome
-ENTRYPOINT ["/app/navidrome"]
-CMD ["--configfile", "/data/navidrome.toml"]
+# Start Navidrome using your config
+CMD ["--configfile", "/app/navidrome.toml"]
