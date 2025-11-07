@@ -1,11 +1,47 @@
-# Basic Navidrome Configuration
-MusicFolder = "/app/data/music"
-DataFolder  = "/app/data"
-Address     = "0.0.0.0"
-Port        = 4533
-LogLevel    = "info"
-EnableSharing = true
+# ==============================
+# 🌐 Spotlite Navidrome Config
+# ==============================
 
-# Admin credentials (you can change these)
-AdminUser  = "balu"
+# Path where Navidrome looks for music
+# On Render, this will be your mounted OneDrive path (if using Rclone)
+# If running locally, this can be your local OneDrive sync folder path
+MusicFolder = "C:\Users\kasul\Music"
+
+# Path for Navidrome database and metadata
+DataFolder = "C:\Users\kasul\navidrome-cloud\data"
+
+# Host and port settings
+Address = "0.0.0.0"
+Port = 4533
+
+# Logging
+LogLevel = "info"
+
+# Enable useful features
+EnableSharing = true
+EnableTranscodingConfig = true
+AutoImportPlaylists = true
+
+# Optional: Transcoding settings for mobile streaming
+TranscodingCacheSize = "500MB"
+
+# Admin credentials
+AdminUser = "balu"
 AdminPassword = "1234@balu"
+
+# Web UI theme and customization
+UICss = ""
+Theme = "auto"
+
+# ==============================
+# ☁️ Optional: Remote Sync Setup
+# ==============================
+# If you use rclone to mount OneDrive to /app/data/music, 
+# Navidrome will automatically scan it.
+# Example (Render command):
+# rclone mount onedrive:Music /app/data/music --vfs-cache-mode writes
+#
+# You can also set environment variables in Render:
+#   MUSIC_DIR=/app/data/music
+#   ADMIN_USER=admin
+#   ADMIN_PASSWORD=admin123

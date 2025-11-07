@@ -1,13 +1,13 @@
-# Use official Navidrome image
+# Use the official Navidrome image
 FROM deluan/navidrome:latest
 
-# Copy your config file into the container
+# Copy config file into container
 COPY navidrome.toml /app/navidrome.toml
 
-# Copy your music if you want to bundle it (optional)
-# COPY data/music /app/data/music
+# Create music and data directories
+RUN mkdir -p /app/data/music
 
 EXPOSE 4533
 
-# Start Navidrome using your config
+# Run Navidrome with our custom config
 CMD ["--configfile", "/app/navidrome.toml"]
