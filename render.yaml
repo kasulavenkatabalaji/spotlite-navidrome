@@ -1,13 +1,17 @@
 services:
   - type: web
-    name: spotlite-navidrome
+    name: navidrome-cloud
     env: docker
     plan: free
     autoDeploy: true
+    disk:
+      name: navidrome-data
+      mountPath: /data
+      sizeGB: 1
     envVars:
       - key: ND_MUSICFOLDER
         value: /music
       - key: ND_DATAFOLDER
         value: /data
-      - key: ND_PORT
-        value: 4533
+      - key: ND_LOGLEVEL
+        value: info
