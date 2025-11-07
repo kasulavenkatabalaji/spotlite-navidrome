@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotlite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2 class="logo">Spotlite</h2>
+    <a href="#" id="albumsTab">Albums</a>
+    <a href="#" id="favouritesTab">Favourites</a>
+    <a href="#" id="recentlyTab">Recently Played</a>
+  </div>
+
+  <div class="main-content">
+    <h1 id="sectionTitle">Albums</h1>
+    <div id="album-list" class="album-list"></div>
+
+    <div id="song-section" class="hidden">
+      <h1>Songs</h1>
+      <div id="song-list" class="song-list"></div>
+    </div>
+
+    <div id="favourite-section" class="hidden">
+      <h1>Favourites</h1>
+      <div id="favourite-list" class="song-list"></div>
+    </div>
+
+    <div id="recently-section" class="hidden">
+      <h1>Recently Played</h1>
+      <div id="recently-list" class="song-list"></div>
+    </div>
+  </div>
+
+  <!-- Now Playing Bar -->
+  <div class="now-playing-bar">
+    <img class="now-playing-cover" src="default.jpg" alt="cover">
+
+    <div class="now-playing-info">
+      <span class="song-title">No song playing</span>
+      <span class="song-artist"></span>
+    </div>
+    <button id="playPauseBtn">▶</button>
+  </div>
+
+  <!-- Full Player -->
+  <div class="full-player hidden">
+    <div class="player-header">
+      <button id="closePlayer">⤵</button>
+    </div>
+    <div class="player-art">
+      <img src="default.jpg" alt="Cover" id="playerCover">
+
+
+    </div>
+    <div class="player-info">
+      <h2 id="playerTitle">Song Title</h2>
+      <p id="playerArtist">Artist Name</p>
+    </div>
+    <div class="player-controls">
+      <button id="prevFull">⏮</button>
+      <button id="playFull">▶</button>
+      <button id="nextFull">⏭</button>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
