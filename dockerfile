@@ -2,7 +2,7 @@
 FROM deluan/navidrome:latest
 
 # Install rclone
-RUN apt-get update && apt-get install -y rclone fuse && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache rclone fuse
 
 # Expose Navidrome default port
 EXPOSE 4533
