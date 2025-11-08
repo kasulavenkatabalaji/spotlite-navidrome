@@ -1,13 +1,11 @@
 #!/bin/bash
 set -e
 
-# Mount OneDrive Music folder using rclone
-echo "Mounting OneDrive music folder..."
-rclone mount onedrive:/Music /music --vfs-cache-mode full &
+# Point rclone to our config file
+export RCLONE_CONFIG=/app/rclone.conf
 
-# Wait a few seconds to let mount stabilize
-sleep 10
+echo "Syncing OneDrive music to local folder..."
+rclone sync onedrive:/Music /music --progress --create-empty-src-dirs
 
-# Start Navidrome
 echo "Starting Navidrome..."
 /app/navidrome
