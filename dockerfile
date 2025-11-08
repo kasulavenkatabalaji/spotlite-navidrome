@@ -1,15 +1,24 @@
-# --- Build Navidrome with rclone support ---
+# Use the official Navidrome image
 FROM deluan/navidrome:latest
 
-# Install rclone
-RUN apk add --no-cache rclone fuse
+# Install rclone and fuse (for OneDrive mount)
+RUN apk add --no-cache rclone fuse bash
 
-# Expose Navidrome default port
+# Environment variables for Navidrome
+ENV ND_DATA=/data \
+    ND_MUSICFOLDER=/music \
+    ND_PORT=4533 \
+    ND_LOGLEVEL=info
+
+# Create directories
+RUN mkdir -p /music /data
+
+# Copy a startup script into the container
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Expose Navidrome port
 EXPOSE 4533
 
-# Copy rclone config (we’ll set this up in Render secrets)
-VOLUME /config
-
-# Start command: mount OneDrive + launch Navidrome
-CMD rclone mount onedrive:/Music /music --vfs-cache-mode full & \
-    ./navidrome --datafolder /data --musicfolder /music
+# Run the startup script
+CMD ["/start.sh"]
