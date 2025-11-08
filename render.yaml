@@ -1,17 +1,19 @@
 services:
   - type: web
-    name: navidrome-cloud
+    name: navidrome
     env: docker
     plan: free
     autoDeploy: true
-    disk:
-      name: navidrome-data
-      mountPath: /data
-      sizeGB: 1
     envVars:
-      - key: ND_MUSICFOLDER
-        value: /music
       - key: ND_DATAFOLDER
         value: /data
-      - key: ND_LOGLEVEL
-        value: info
+      - key: ND_MUSICFOLDER
+        value: /music
+      - key: RCLONE_CONFIG_ONEDRIVE_TYPE
+        value: onedrive
+      - key: RCLONE_CONFIG_ONEDRIVE_TOKEN
+        sync: false   # we'll add manually in Render dashboard
+      - key: RCLONE_CONFIG_ONEDRIVE_DRIVE_ID
+        sync: false
+      - key: RCLONE_CONFIG_ONEDRIVE_DRIVE_TYPE
+        value: personal

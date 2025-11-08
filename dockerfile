@@ -1,13 +1,15 @@
-# Use the official Navidrome image
+# --- Build Navidrome with rclone support ---
 FROM deluan/navidrome:latest
 
-# Copy config file into container
-COPY navidrome.toml /app/navidrome.toml
+# Install rclone
+RUN apt-get update && apt-get install -y rclone fuse && rm -rf /var/lib/apt/lists/*
 
-# Create music and data directories
-RUN mkdir -p /app/data/music
-
+# Expose Navidrome default port
 EXPOSE 4533
 
-# Run Navidrome with our custom config
-CMD ["--configfile", "/app/navidrome.toml"]
+# Copy rclone config (we’ll set this up in Render secrets)
+VOLUME /config
+
+# Start command: mount OneDrive + launch Navidrome
+CMD rclone mount onedrive:/Music /music --vfs-cache-mode full & \
+    ./navidrome --datafolder /data --musicfolder /music

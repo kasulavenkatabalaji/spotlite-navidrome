@@ -1,5 +1,5 @@
 // ---- CONFIG ----
-const API_URL = "https://ambien-pet-hispanic-refresh.trycloudflare.com/rest";
+const API_URL = "https://spotlite-navidrome.onrender.com";
 const USERNAME = "santosh";
 const PASSWORD = "1234@balu";
 const API_VERSION = "1.16.1";
